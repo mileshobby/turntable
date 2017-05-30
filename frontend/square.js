@@ -1,7 +1,9 @@
+import anime from 'animejs';
+
 class Square{
 
   constructor(tone, parent, frequency){
-    this.audio = new Audio(`../assets/drums/${tone}.wav`);
+    this.audio = new Audio(`../assets/tones2/${tone}.mp3`);
     this.play = this.play.bind(this);
     this.toggleState = this.toggleState.bind(this);
     this.square = document.createElement('div');
@@ -11,12 +13,14 @@ class Square{
     this.square.addEventListener("mouseover", this.toggleState);
     this.square.addEventListener("mousedown", this.toggleState);
     this.selected = false;
+    this.animate = this.animate.bind(this);
     // this.randomColor = this.randomColor.bind(this);
   }
 
   play(e){
     if (this.selected){
      this.square.classList.add('playing');
+     this.animate();
     //  this.square.style.background = this.randomColor();
      this.audio.play();
      setTimeout(()=>{
@@ -24,6 +28,18 @@ class Square{
      }, this.frequency);
    }
 
+  }
+
+  animate(){
+    anime({
+       targets: this.square,
+       translateY: [
+         { value: 10, duration: this.frequency/2 },
+         { value: 0, duration: this.frequency/2 }
+       ],
+       rotate: '1turn',
+       duration: this.frequency*2,
+     });
   }
 
   // randomColor(){

@@ -1,12 +1,26 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
 import Square from './square';
 import Column from './column';
+import anime from 'animejs';
+
 
 document.addEventListener('DOMContentLoaded', () => {
+   //setup
    const root = document.getElementById('main');
    let mainGrid = new Grid(root, 16);
    mainGrid.play(0);
+
+  //  document.addEventListener('mouseup',()=>{
+    //  anime({
+    //     targets: '.selected',
+    //     translateY: [
+    //       { value: 10, duration: 200 },
+    //       { value: 0, duration: 200 }
+    //     ],
+    //     rotate: '1turn',
+    //     duration: 2000,
+    //     loop: true
+    //   });
+    // });
  });
 
 
