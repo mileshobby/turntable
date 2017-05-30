@@ -4,14 +4,9 @@ import Square from './square';
 import Column from './column';
 
 document.addEventListener('DOMContentLoaded', () => {
-   const title = document.createElement('h1');
-   title.innerHTML = "Chimes";
    const root = document.getElementById('main');
-   root.appendChild(title);
    let mainGrid = new Grid(root, 16);
    mainGrid.play(0);
-  //  const col = new Column(root, 16);
-  //  let square = new Square('tone1', mainGrid.grid);
  });
 
 
