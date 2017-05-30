@@ -32,16 +32,20 @@ class Grid{
     this.pauseIndex = 0;
 
     //play-pause
-    let play = document.getElementById('play');
-    play.addEventListener('click', () => {
+    //TODO refactor out of this class
+    this.playButton = document.getElementById('play');
+    this.playButton.addEventListener('click', () => {
       if (this.stopPlay){
         this.stopPlay = false;
         this.play(this.pauseIndex);
+        this.playButton.classList.add('off');
+        this.pause.classList.remove('off');
     }});
-    let pause = document.getElementById('pause');
-    pause.addEventListener('click', () => {
-      console.log('hi');
+    this.pause = document.getElementById('pause');
+    this.pause.addEventListener('click', () => {
       this.stopPlay = true;
+      this.pause.classList.add('off');
+      this.playButton.classList.remove('off');
     });
   }
 

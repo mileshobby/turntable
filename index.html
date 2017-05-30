@@ -3,15 +3,18 @@
   <head>
     <script src="bundle.js"></script>
     <link href="assets/stylesheets/square.css" type="text/css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/e5e97755c5.js"></script>
     <meta charset="utf-8">
     <title>Chime</title>
   </head>
   <body>
     <div id="main">
       <h1>Chimes</h1>
-      <button id='pause'>Pause</button>
-      <button id='play'>Play</button>
-      <input id='freq' type="range" min=100 max=2000 value=200 />
+      <nav id='controls'>
+        <button id='pause'><i class="fa fa-pause" aria-hidden="true"></i></button>
+        <button id='play' class="off"><i class="fa fa-play" aria-hidden="true"></i></button>
+        <input id='freq' type="range" min=100 max=500 value=200 />
+      </nav>
     </div>
   </body>
 </html>

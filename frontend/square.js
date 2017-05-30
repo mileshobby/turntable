@@ -1,7 +1,7 @@
 class Square{
 
   constructor(tone, parent, frequency){
-    this.audio = new Audio(`../assets/tones2/${tone}.mp3`);
+    this.audio = new Audio(`../assets/drums/${tone}.wav`);
     this.play = this.play.bind(this);
     this.toggleState = this.toggleState.bind(this);
     this.square = document.createElement('div');
