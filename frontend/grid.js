@@ -13,18 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
 class Grid{
 
   constructor(parent, numCols){
-    //frequency slider
-    this.slider = document.createElement('input');
-    let freqLabel = document.createElement('label');
-    freqLabel.innerHTML = "Hz";
-    parent.appendChild(freqLabel);
-    parent.appendChild(this.slider);
-    this.slider.setAttribute("type", "range");
-    this.slider.setAttribute("min", 100);
-    this.slider.setAttribute("max", 1000);
-    this.slider.setAttribute("value", 200);
-    this.frequency = 200;
-    this.slider.addEventListener('input', (e)=>{
+    //slider
+    let slider = document.getElementById('freq');
+    this.frequency = slider.value;
+    slider.addEventListener('input', (e)=>{
       this.frequency = e.target.value;
     });
 
@@ -37,9 +29,24 @@ class Grid{
     this.columns = this.columns.map( (el, i) => new Column(this.grid, 16, this.frequency) );
     this.play = this.play.bind(this);
     this.stopPlay = false;
+    this.pauseIndex = 0;
+
+    //play-pause
+    let play = document.getElementById('play');
+    play.addEventListener('click', () => {
+      if (this.stopPlay){
+        this.stopPlay = false;
+        this.play(this.pauseIndex);
+    }});
+    let pause = document.getElementById('pause');
+    pause.addEventListener('click', () => {
+      console.log('hi');
+      this.stopPlay = true;
+    });
   }
 
   play(colIndex){
+    this.pauseIndex = colIndex;
     if (this.stopPlay) return;
     let nextIndex = (colIndex === 15 ? 0 : colIndex+1);
     setTimeout(() => {
