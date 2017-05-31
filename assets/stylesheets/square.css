@@ -7,8 +7,9 @@ body{
   height: 100%;
 }
 
-.cube-control, #reset{
+.cube-control, #reset-face, #reset-all{
   background-color: white;
+  margin: 1px;
 }
 
 #main-header{
@@ -20,12 +21,24 @@ body{
 #main-content{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 #cube-controls{
   display: flex;
   flex-direction: column;
+  width: 150px
+  /*position: absolute;
+  left: 0px;
+  top: 0px;*/
+}
+.flex-dummy{
+  width: 150px;
+  height: 1000px;
+  content: "";
 }
 .cube-control{
   margin: 5px;
@@ -34,6 +47,8 @@ body{
 #container{
   position: relative;
   perspective: 1500px;
+  width: 600px;
+  margin: 50px;
 }
 
 #cube{
@@ -107,7 +122,6 @@ body{
 .grid{
   display: flex;
   flex-direction: row;
-  width: 600px;
   justify-content: center;
   padding: 5px;
 }

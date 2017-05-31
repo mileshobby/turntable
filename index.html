@@ -10,7 +10,8 @@
   <body>
     <header id='main-header'>
       <h1>TurnTable</h1>
-      <button id='reset'>RESET ALL</button
+      <button id='reset-all'>RESET ALL</button>
+      <button id='reset-face'>RESET FACE</button>
       <nav id='controls'>
         <button id='pause'><i class="fa fa-pause" aria-hidden="true"></i></button>
         <button id='play' class="off"><i class="fa fa-play" aria-hidden="true"></i></button>
@@ -28,16 +29,19 @@
         <button id='right-button' class='cube-control'>HATS</button>
       </nav>
 
-      <section id='container'>
-        <div id='cube'>
-          <figure id="main" class='front'></figure>
-          <figure class="back"></figure>
-          <figure class="right"></figure>
-          <figure class="left"></figure>
-          <figure class="top"></figure>
-          <figure id='main-2' class='bottom'></figure>
-          </div>
-      </section>
+
+        <section id='container'>
+          <div id='cube' class='show-front'>
+            <figure id="main" class='front'></figure>
+            <figure class="back"></figure>
+            <figure class="right"></figure>
+            <figure class="left"></figure>
+            <figure class="top"></figure>
+            <figure id='main-2' class='bottom'></figure>
+            </div>
+        </section>
+
+      <div class='flex-dummy'></div>
 
   </body>
 </html>

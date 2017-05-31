@@ -90,7 +90,7 @@ const setupInstruments = () => {
   const right = document.getElementsByClassName('right')[0];
   let hats = new Grid(right, 16, 16, 'hats', 'wav');
   const back = document.getElementsByClassName('back')[0];
- //  let brass = new Grid(back, 16, 10, 'brass', 'wav');
+  let brass = new Grid(back, 16, 16, 'tones2', 'mp3');
   const top = document.getElementsByClassName('top')[0];
   let vox = new Grid(top, 16, 16, 'vox', 'wav');
   hats.play(0);
@@ -99,14 +99,29 @@ const setupInstruments = () => {
   bells.play(0);
   drums.play(0);
   snares.play(0);
-  let instruments = [bells, drums, snares, hats, vox];
-  setupResetButtons(instruments);
+  let grids = [{instrument: bells, face: "front"},
+                {instrument: drums, face: "bottom"},
+                {instrument: snares, face: "left"},
+                {instrument: hats, face: "right"},
+                {instrument: brass, face: "back"},
+                {instrument: vox, face: "top"}];
+  setupResetButtons(grids);
 };
 
-const setupResetButtons = (instruments) => {
-  let resetAllButton = document.getElementById('reset');
+const setupResetButtons = (grids) => {
+  let resetAllButton = document.getElementById('reset-all');
   resetAllButton.addEventListener('click', () => {
-    instruments.forEach( instrument => instrument.reset() );
+    grids.forEach( grid => grid.instrument.reset() );
   });
 
+  let resetFaceButton = document.getElementById('reset-face');
+  let cube = document.getElementById('cube');
+  resetFaceButton.addEventListener('click', ()=> {
+    let currentFace = cube.className.split('-')[1];
+    for (let i = 0; i < grids.length; i++) {
+      if(grids[i].face === currentFace){
+        grids[i].instrument.reset();
+      }
+    }
+  });
 };
