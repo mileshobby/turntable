@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
    let mainGrid = new Grid(front, 16, 16, 'tones2', 'mp3');
    mainGrid.play(0);
    const back = document.getElementById('main-2');
-   let drums = new Grid(back, 16, 16, 'tones2', 'mp3');
+   let drums = new Grid(back, 16, 16, 'drums', 'wav');
    drums.play(0);
    let flipButton = document.getElementById('flip-button');
    let card = document.getElementById('card');

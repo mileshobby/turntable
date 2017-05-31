@@ -24,13 +24,13 @@ class Square{
 
   play(e){
     if (this.selected){
+     this.audio.stop();
      this.square.classList.add('playing');
      this.animate();
     //  this.square.style.background = this.randomColor();
      this.audio.play();
      setTimeout(()=>{
        this.square.classList.remove('playing');
-      //  this.audio.stop();
      }, this.frequency);
    }
 
