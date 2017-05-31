@@ -68,29 +68,14 @@ class Grid{
 }
 
 const setupRotationControls = () => {
-  let topButton = document.getElementById('top-button');
-  let bottomButton = document.getElementById('bottom-button');
-  let leftButton = document.getElementById('left-button');
-  let rightButton = document.getElementById('right-button');
-  let frontButton = document.getElementById('front-button');
-  let backButton = document.getElementById('back-button');
+  //DRYed up code by making event listener on wrapping div instead of each
+  //individual button
+  let cubeControls = document.getElementById('cube-controls');
   let cube = document.getElementById('cube');
-  frontButton.addEventListener('click', ()=>{
-    cube.className = "show-front";
-  });
-  backButton.addEventListener('click', ()=>{
-    cube.className = "show-back";
-  });
-  leftButton.addEventListener('click', ()=>{
-    cube.className = "show-left";
-  });
-  rightButton.addEventListener('click', ()=>{
-    cube.className = "show-right";
-  });
-  topButton.addEventListener('click', ()=>{
-    cube.className = "show-top";
-  });
-  bottomButton.addEventListener('click', ()=>{
-    cube.className = "show-bottom";
+
+  cubeControls.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const side = e.target.id.split("-")[0];
+    cube.className = `show-${side}`;
   });
 };
