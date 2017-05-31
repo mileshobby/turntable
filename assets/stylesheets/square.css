@@ -17,19 +17,34 @@ body{
   align-items: center;
 }
 
+#main-content{
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+}
+
+#cube-controls{
+  display: flex;
+  flex-direction: column;
+}
+.cube-control{
+  margin: 5px;
+}
+
 #container{
   position: relative;
   perspective: 1500px;
 }
 
 #cube{
+  margin: 20px;
   width: 600px;
   height: 600px;
   position: absolute;
   transform-style: preserve-3d;
-  transition: transform 2s;
+  transition: transform 1.5s;
   transform: translateZ( -100px );
-  left: 25vw;
+  /*left: 25vw;*/
 }
 
 #cube.show-front  { transform: translateZ( -100px ) rotateY(    0deg ); }
@@ -79,7 +94,7 @@ body{
   transform: rotateY( 180deg );
 }
 
-#main{
+.front{
   display: flex;
   flex-direction: column;
   justify-content: center;

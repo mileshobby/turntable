@@ -5,12 +5,24 @@ import anime from 'animejs';
 
 document.addEventListener('DOMContentLoaded', () => {
    //setup
-   const front = document.getElementById('main');
-   let mainGrid = new Grid(front, 16, 16, 'tones2', 'mp3');
-   mainGrid.play(0);
-  //  const back = document.getElementById('main-2');
-  //  let drums = new Grid(back, 16, 16, 'drums', 'wav');
-  //  drums.play(0);
+   const front = document.getElementsByClassName('front')[0];
+   let bells = new Grid(front, 16, 16, 'tones2', 'mp3');
+   const bottom = document.getElementsByClassName('bottom')[0];
+   let drums = new Grid(bottom, 16, 16, 'kicks', 'wav');
+   const left = document.getElementsByClassName('left')[0];
+   let snares = new Grid(left, 16, 16, 'claps&snares', 'wav');
+   const right = document.getElementsByClassName('right')[0];
+   let hats = new Grid(right, 16, 16, 'hats', 'wav');
+   const back = document.getElementsByClassName('back')[0];
+  //  let brass = new Grid(back, 16, 10, 'brass', 'wav');
+   const top = document.getElementsByClassName('top')[0];
+   let vox = new Grid(top, 16, 16, 'vox', 'wav');
+   hats.play(0);
+  //  brass.play(0);
+   vox.play(0);
+   bells.play(0);
+   drums.play(0);
+   snares.play(0);
    setupRotationControls();
  });
 
