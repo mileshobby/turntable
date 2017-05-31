@@ -9,19 +9,30 @@
   </head>
   <body>
     <header id='main-header'>
-      <h1>Chimes</h1>
+      <h1>TurnTable</h1>
       <nav id='controls'>
       <button id='pause'><i class="fa fa-pause" aria-hidden="true"></i></button>
       <button id='play' class="off"><i class="fa fa-play" aria-hidden="true"></i></button>
       <input id='freq' type="range" min=100 max=500 value=200 />
     </header>
   </nav>
-    <button id='flip-button'>FLIP</button>
+    <div>
+      <button id='front-button' class='cube-control'>FRONT</button>
+      <button id='back-button' class='cube-control'>BACK</button>
+      <button id='top-button' class='cube-control'>TOP</button>
+      <button id='bottom-button' class='cube-control'>BOTTOM</button>
+      <button id='left-button' class='cube-control'>LEFT</button>
+      <button id='right-button' class='cube-control'>RIGHT</button>
+    </div>
+
     <section id='container'>
-      <div id='card'>
-        <figure id="main" class='front'>
-        </figure>
-        <figure id='main-2' class='back'>
+      <div id='cube'>
+        <figure id="main" class='front'></figure>
+        <figure class="back">2</figure>
+        <figure class="right">3</figure>
+        <figure class="left">4</figure>
+        <figure class="top">5</figure>
+        <figure id='main-2' class='bottom'>
 
         </figure>
         </div>

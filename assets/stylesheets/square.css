@@ -7,48 +7,75 @@ body{
   height: 100%;
 }
 
+.cube-control{
+  background-color: white;
+}
+
 #main-header{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#flip-button{
-  background-color: white;
-}
-
 #container{
   position: relative;
-  perspective: 2000px;
+  perspective: 1500px;
 }
 
-#card{
-  width: 100%;
-  height: 100%;
+#cube{
+  width: 600px;
+  height: 600px;
   position: absolute;
   transform-style: preserve-3d;
   transition: transform 2s;
+  transform: translateZ( -100px );
   left: 25vw;
 }
 
-#card figure{
+#cube.show-front  { transform: translateZ( -100px ) rotateY(    0deg ); }
+#cube.show-back   { transform: translateZ( -100px ) rotateX( -180deg ); }
+#cube.show-right  { transform: translateZ( -100px ) rotateY(  -90deg ); }
+#cube.show-left   { transform: translateZ( -100px ) rotateY(   90deg ); }
+#cube.show-top    { transform: translateZ( -100px ) rotateX(  -90deg ); }
+#cube.show-bottom { transform: translateZ( -100px ) rotateX(   90deg ); }
+
+#cube figure{
   margin: 0;
   display: block;
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  width: 600px;
+  height: 600px;
 }
 
-#card .front {
-  background: red;
+#cube .front  {
+  transform: rotateY(   0deg ) translateZ( 300px );
+  background-color: magenta;
 }
-#card .back {
-  background: blue;
-  transform: rotateY( 180deg );
+#cube .back   {
+  transform: rotateX( 180deg ) translateZ( 300px );
+  background-color: purple;
+}
+#cube .right  {
+  transform: rotateY(  90deg ) translateZ( 300px );
+  background-color: blue;
+}
+#cube .left   {
+  transform: rotateY( -90deg ) translateZ( 300px );
+  background-color: green;
+}
+#cube .top    {
+  transform: rotateX(  90deg ) translateZ( 300px );
+  background-color: red;
+}
+#cube .bottom {
+  transform: rotateX( -90deg ) translateZ( 300px );
+  background-color: teal;
 }
 
-#card.flipped {
+#cube.flipped {
   transform: rotateY( 180deg );
 }
 
@@ -58,8 +85,8 @@ body{
   justify-content: center;
   align-items: center;
   background-color: black;
-  width: 100%;
-  height: 100%;
+  width: 600px;
+  height: 600px;
   position: absolute;
   transform-style: preserve-3d;
   transition: transform 2s;*/
@@ -68,7 +95,7 @@ body{
 .grid{
   display: flex;
   flex-direction: row;
-  background-color: blue;
+  /*background-color: blue;*/
   width: 600px;
   display: flex;
   justify-content: center;

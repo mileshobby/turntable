@@ -8,29 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
    const front = document.getElementById('main');
    let mainGrid = new Grid(front, 16, 16, 'tones2', 'mp3');
    mainGrid.play(0);
-   const back = document.getElementById('main-2');
-   let drums = new Grid(back, 16, 16, 'drums', 'wav');
-   drums.play(0);
-   let flipButton = document.getElementById('flip-button');
-   let card = document.getElementById('card');
-   flipButton.addEventListener('click', ()=>{
-     card.classList.toggle('flipped');
-   });
-
-  //  anime({
-  //   targets: '.grid',
-  //   translateX: 250,// Animate all divs translateX property to 250px
-  //   scale: 1, // Animate all divs scale to 1.5
-  //   rotate: '4turn', // Animate all divs rotation to 1 turn
-  //   loop: true
-  // });
+  //  const back = document.getElementById('main-2');
+  //  let drums = new Grid(back, 16, 16, 'drums', 'wav');
+  //  drums.play(0);
+   setupRotationControls();
  });
 
 
 class Grid{
 
   constructor(parent, numCols, numRows, folder, filetype){
-    slider
+    // slider
     let slider = document.getElementById('freq');
     this.frequency = slider.value;
     slider.addEventListener('input', (e)=>{
@@ -78,3 +66,31 @@ class Grid{
   }
 
 }
+
+const setupRotationControls = () => {
+  let topButton = document.getElementById('top-button');
+  let bottomButton = document.getElementById('bottom-button');
+  let leftButton = document.getElementById('left-button');
+  let rightButton = document.getElementById('right-button');
+  let frontButton = document.getElementById('front-button');
+  let backButton = document.getElementById('back-button');
+  let cube = document.getElementById('cube');
+  frontButton.addEventListener('click', ()=>{
+    cube.className = "show-front";
+  });
+  backButton.addEventListener('click', ()=>{
+    cube.className = "show-back";
+  });
+  leftButton.addEventListener('click', ()=>{
+    cube.className = "show-left";
+  });
+  rightButton.addEventListener('click', ()=>{
+    cube.className = "show-right";
+  });
+  topButton.addEventListener('click', ()=>{
+    cube.className = "show-top";
+  });
+  bottomButton.addEventListener('click', ()=>{
+    cube.className = "show-bottom";
+  });
+};
