@@ -8,6 +8,10 @@ html{
   justify-content: center;
   align-items: center;
   background-color: black;
+  /*width: 200px;
+  height: 260px;
+  position: relative;
+  perspective: 800px;*/
 }
 
 .grid{

@@ -2,8 +2,8 @@ import anime from 'animejs';
 
 class Square{
 
-  constructor(tone, parent, frequency){
-    this.audio = new Audio(`../assets/tones2/${tone}.mp3`);
+  constructor(tone, parent, frequency, folder, filetype){
+    this.audio = new Audio(`../assets/${folder}/${tone}.${filetype}`);
     this.play = this.play.bind(this);
     this.toggleState = this.toggleState.bind(this);
     this.square = document.createElement('div');
@@ -25,6 +25,7 @@ class Square{
      this.audio.play();
      setTimeout(()=>{
        this.square.classList.remove('playing');
+       this.audio.stop();
      }, this.frequency);
    }
 
