@@ -9,10 +9,15 @@ class Column{
     this.squares = new Array(numRows).fill();
     this.squares = this.squares.map((el,i)=>new Square(`tone${i+1}`,this.column, frequency, folder, filetype));
     this.playAll = this.playAll.bind(this);
+    this.turnOff = this.turnOff.bind(this);
   }
 
   playAll(){
     this.squares.forEach(square => square.play());
+  }
+
+  turnOff(){
+    this.squares.forEach(square => square.turnOff());
   }
 }
 

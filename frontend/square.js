@@ -19,6 +19,7 @@ class Square{
     this.square.addEventListener("mousedown", this.toggleState);
     this.selected = false;
     this.animate = this.animate.bind(this);
+    this.turnOff = this.turnOff.bind(this);
     // this.randomColor = this.randomColor.bind(this);
   }
 
@@ -34,6 +35,13 @@ class Square{
      }, this.frequency);
    }
 
+  }
+
+  turnOff(){
+    this.selected = false;
+    this.square.classList.remove('selected');
+    this.square.classList.remove('playing');
+    this.square.classList.remove('playing');
   }
 
   animate(){

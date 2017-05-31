@@ -4,29 +4,11 @@ import anime from 'animejs';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-   //setup
-   const front = document.getElementsByClassName('front')[0];
-   let bells = new Grid(front, 16, 16, 'tones2', 'mp3');
-   const bottom = document.getElementsByClassName('bottom')[0];
-   let drums = new Grid(bottom, 16, 16, 'kicks', 'wav');
-   const left = document.getElementsByClassName('left')[0];
-   let snares = new Grid(left, 16, 16, 'claps&snares', 'wav');
-   const right = document.getElementsByClassName('right')[0];
-   let hats = new Grid(right, 16, 16, 'hats', 'wav');
-   const back = document.getElementsByClassName('back')[0];
-  //  let brass = new Grid(back, 16, 10, 'brass', 'wav');
-   const top = document.getElementsByClassName('top')[0];
-   let vox = new Grid(top, 16, 16, 'vox', 'wav');
-   hats.play(0);
-  //  brass.play(0);
-   vox.play(0);
-   bells.play(0);
-   drums.play(0);
-   snares.play(0);
+   setupInstruments();
    setupRotationControls();
  });
 
-
+//TODO refactor this out into its own file
 class Grid{
 
   constructor(parent, numCols, numRows, folder, filetype){
@@ -48,6 +30,7 @@ class Grid{
     this.play = this.play.bind(this);
     this.stopPlay = false;
     this.pauseIndex = 0;
+    this.reset = this.reset.bind(this);
 
     // play-pause
     // TODO refactor out of this class
@@ -77,6 +60,10 @@ class Grid{
     }, this.frequency);
   }
 
+  reset(){
+    this.columns.forEach( column => column.turnOff());
+  }
+
 }
 
 const setupRotationControls = () => {
@@ -90,4 +77,36 @@ const setupRotationControls = () => {
     const side = e.target.id.split("-")[0];
     cube.className = `show-${side}`;
   });
+};
+
+const setupInstruments = () => {
+  //setup
+  const front = document.getElementsByClassName('front')[0];
+  let bells = new Grid(front, 16, 16, 'tones2', 'mp3');
+  const bottom = document.getElementsByClassName('bottom')[0];
+  let drums = new Grid(bottom, 16, 16, 'kicks', 'wav');
+  const left = document.getElementsByClassName('left')[0];
+  let snares = new Grid(left, 16, 16, 'claps&snares', 'wav');
+  const right = document.getElementsByClassName('right')[0];
+  let hats = new Grid(right, 16, 16, 'hats', 'wav');
+  const back = document.getElementsByClassName('back')[0];
+ //  let brass = new Grid(back, 16, 10, 'brass', 'wav');
+  const top = document.getElementsByClassName('top')[0];
+  let vox = new Grid(top, 16, 16, 'vox', 'wav');
+  hats.play(0);
+ //  brass.play(0);
+  vox.play(0);
+  bells.play(0);
+  drums.play(0);
+  snares.play(0);
+  let instruments = [bells, drums, snares, hats, vox];
+  setupResetButtons(instruments);
+};
+
+const setupResetButtons = (instruments) => {
+  let resetAllButton = document.getElementById('reset');
+  resetAllButton.addEventListener('click', () => {
+    instruments.forEach( instrument => instrument.reset() );
+  });
+
 };
