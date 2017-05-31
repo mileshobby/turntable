@@ -5,11 +5,18 @@ import anime from 'animejs';
 
 document.addEventListener('DOMContentLoaded', () => {
    //setup
-   const root = document.getElementById('main');
-   let mainGrid = new Grid(root, 16, 16, 'tones2', 'mp3');
+   const front = document.getElementById('main');
+   let mainGrid = new Grid(front, 16, 16, 'tones2', 'mp3');
    mainGrid.play(0);
-   let drums = new Grid(root, 16, 16, 'tones2', 'mp3');
+   const back = document.getElementById('main-2');
+   let drums = new Grid(back, 16, 16, 'tones2', 'mp3');
    drums.play(0);
+   let flipButton = document.getElementById('flip-button');
+   let card = document.getElementById('card');
+   flipButton.addEventListener('click', ()=>{
+     card.classList.toggle('flipped');
+   });
+
   //  anime({
   //   targets: '.grid',
   //   translateX: 250,// Animate all divs translateX property to 250px
@@ -23,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 class Grid{
 
   constructor(parent, numCols, numRows, folder, filetype){
-    //slider
+    slider
     let slider = document.getElementById('freq');
     this.frequency = slider.value;
     slider.addEventListener('input', (e)=>{
@@ -42,8 +49,8 @@ class Grid{
     this.stopPlay = false;
     this.pauseIndex = 0;
 
-    //play-pause
-    //TODO refactor out of this class
+    // play-pause
+    // TODO refactor out of this class
     this.playButton = document.getElementById('play');
     this.playButton.addEventListener('click', () => {
       if (this.stopPlay){

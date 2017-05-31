@@ -1,5 +1,10 @@
 import anime from 'animejs';
 
+Audio.prototype.stop = function(){
+    this.pause();
+    this.currentTime = 0.0;
+};
+
 class Square{
 
   constructor(tone, parent, frequency, folder, filetype){
@@ -25,7 +30,7 @@ class Square{
      this.audio.play();
      setTimeout(()=>{
        this.square.classList.remove('playing');
-       this.audio.stop();
+      //  this.audio.stop();
      }, this.frequency);
    }
 
