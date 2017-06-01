@@ -8,7 +8,7 @@ Audio.prototype.stop = function(){
 class Square{
 
   constructor(tone, parent, frequency, folder, filetype){
-    this.audio = new Audio(`../assets/${folder}/${tone}.${filetype}`);
+    this.audio = new Audio(`./assets/${folder}/${tone}.${filetype}`);
     this.play = this.play.bind(this);
     this.toggleState = this.toggleState.bind(this);
     this.square = document.createElement('div');
