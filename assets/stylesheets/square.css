@@ -5,54 +5,88 @@ html{
 
 body{
   height: 100%;
-}
-
-.cube-control, #reset-face, #reset-all{
-  background-color: white;
-  margin: 1px;
-}
-
-#main-header{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+}
+
+#title{
+  text-align: center;
+  font-family: 'Luckiest Guy', sans-serif;
+  letter-spacing: 3px;
 }
 
 #main-content{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-#cube-controls{
+#left-controls{
   display: flex;
   flex-direction: column;
-  width: 150px
-  /*position: absolute;
-  left: 0px;
-  top: 0px;*/
+  border: 1px solid white;
+  border-radius: 3px;
+  align-items: center;
+  padding: 10px;
 }
-.flex-dummy{
-  width: 150px;
-  height: 1000px;
-  content: "";
+
+#left-controls nav{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+  align-items: center;
 }
-.cube-control{
+
+#instructions{
+  color: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+.cube-control, .reset-button{
   margin: 5px;
+  background-color: white;
+  font-size: 18px;
+  width: 175px;
+  padding: 5px;
+}
+
+.cube-control{
+  color: red;
+  background-color: black;
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+.reset-button{
+  color: blue;
+  background-color: black;
+  border: 1px solid blue;
+  border-radius: 5px;
+}
+
+.reset-button:hover{
+  color: black;
+  background-color: blue;
+}
+
+.cube-control:hover{
+  background-color: red;
+  color: black;
 }
 
 #container{
   position: relative;
   perspective: 1500px;
   width: 600px;
-  margin: 50px;
+  margin: 0 auto;
 }
 
 #cube{
-  margin: 20px;
+  margin: 40px;
   width: 600px;
   height: 600px;
   position: absolute;
@@ -104,19 +138,6 @@ body{
 
 #cube.flipped {
   transform: rotateY( 180deg );
-}
-
-.front{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  width: 600px;
-  height: 600px;
-  position: absolute;
-  transform-style: preserve-3d;
-  transition: transform 2s;
 }
 
 .grid{
@@ -197,7 +218,7 @@ i::before{
 
 input[type=range] {
   -webkit-appearance: none;
-  width: 500px;
+  width: 300px;
   margin: 20px 20px;
 }
 input[type=range]:focus {
