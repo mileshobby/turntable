@@ -131,7 +131,7 @@ var Square = function () {
   function Square(tone, parent, frequency, folder, filetype) {
     _classCallCheck(this, Square);
 
-    this.audio = new Audio('../assets/' + folder + '/' + tone + '.' + filetype);
+    this.audio = new Audio('./assets/' + folder + '/' + tone + '.' + filetype);
     this.play = this.play.bind(this);
     this.toggleState = this.toggleState.bind(this);
     this.square = document.createElement('div');
@@ -311,9 +311,9 @@ var Grid = function () {
 
     // slider
     var slider = document.getElementById('freq');
-    this.frequency = slider.value;
+    this.frequency = 600 - slider.value;
     slider.addEventListener('input', function (e) {
-      _this.frequency = e.target.value;
+      _this.frequency = 600 - e.target.value;
     });
 
     //grid
