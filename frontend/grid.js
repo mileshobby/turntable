@@ -15,9 +15,9 @@ class Grid{
   constructor(parent, numCols, numRows, folder, filetype){
     // slider
     let slider = document.getElementById('freq');
-    this.frequency = slider.value;
+    this.frequency = 600 - slider.value;
     slider.addEventListener('input', (e)=>{
-      this.frequency = e.target.value;
+      this.frequency = 600 - e.target.value;
     });
 
     //grid
