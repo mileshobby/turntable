@@ -6,6 +6,7 @@ import anime from 'animejs';
 document.addEventListener('DOMContentLoaded', () => {
    setupInstruments();
    setupRotationControls();
+   loadContent();
  });
 
 //TODO refactor this out into its own file
@@ -82,11 +83,11 @@ const setupRotationControls = () => {
 const setupInstruments = () => {
   //setup
   const front = document.getElementsByClassName('front')[0];
-  let bells = new Grid(front, 16, 16, 'tones2', 'mp3');
+  let snares = new Grid(front, 16, 16, 'claps&snares', 'wav');
+  const left = document.getElementsByClassName('left')[0];
+  let bells = new Grid(left, 16, 16, 'tones2', 'mp3');
   const bottom = document.getElementsByClassName('bottom')[0];
   let drums = new Grid(bottom, 16, 16, 'kicks', 'wav');
-  const left = document.getElementsByClassName('left')[0];
-  let snares = new Grid(left, 16, 16, 'claps&snares', 'wav');
   const right = document.getElementsByClassName('right')[0];
   let hats = new Grid(right, 16, 16, 'hats', 'wav');
   const back = document.getElementsByClassName('back')[0];
@@ -99,9 +100,9 @@ const setupInstruments = () => {
   bells.play(0);
   drums.play(0);
   snares.play(0);
-  let grids = [{instrument: bells, face: "front"},
+  let grids = [{instrument: bells, face: "left"},
                 {instrument: drums, face: "bottom"},
-                {instrument: snares, face: "left"},
+                {instrument: snares, face: "front"},
                 {instrument: hats, face: "right"},
                 {instrument: shakers, face: "back"},
                 {instrument: bongos, face: "top"}];
@@ -124,4 +125,10 @@ const setupResetButtons = (grids) => {
       }
     }
   });
+};
+
+const loadContent = () => {
+  setTimeout(()=>{
+    document.getElementById('loading-screen').style.display = 'none';
+  }, 5000);
 };

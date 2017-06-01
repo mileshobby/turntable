@@ -24,7 +24,7 @@ class Square{
   }
 
   play(e){
-    if (this.selected){
+    if (this.selected && this.audio.readyState === 4 ){
      this.audio.stop();
      this.square.classList.add('playing');
      this.animate();

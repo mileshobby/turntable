@@ -10,6 +10,20 @@ body{
   margin-bottom: 100px;
 }
 
+#loading-screen{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#loading-screen .fa{
+  font-size: 120px !important;
+}
+
 #title{
   display: flex;
   flex-direction: center;
