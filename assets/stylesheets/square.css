@@ -138,27 +138,28 @@ h2{
 
 #cube .front  {
   transform: rotateY(   0deg ) translateZ( 300px );
-  background-color: magenta;
+  /*background-color: magenta;*/
+  border: 1px solid red;
 }
 #cube .back   {
   transform: rotateX( 180deg ) translateZ( 300px );
-  background-color: purple;
+  /*background-color: purple;*/border: 1px solid red;
 }
 #cube .right  {
   transform: rotateY(  90deg ) translateZ( 300px );
-  background-color: blue;
+  /*background-color: blue;*/border: 1px solid red;
 }
 #cube .left   {
   transform: rotateY( -90deg ) translateZ( 300px );
-  background-color: green;
+  /*background-color: green;*/border: 1px solid red;
 }
 #cube .top    {
   transform: rotateX(  90deg ) translateZ( 300px );
-  background-color: red;
+  /*background-color: red;*/border: 1px solid red;
 }
 #cube .bottom {
   transform: rotateX( -90deg ) translateZ( 300px );
-  background-color: teal;
+  /*background-color: teal;*/border: 1px solid red;
 }
 
 #cube.flipped {

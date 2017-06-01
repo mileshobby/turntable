@@ -90,12 +90,12 @@ const setupInstruments = () => {
   const right = document.getElementsByClassName('right')[0];
   let hats = new Grid(right, 16, 16, 'hats', 'wav');
   const back = document.getElementsByClassName('back')[0];
-  let brass = new Grid(back, 16, 16, 'tones2', 'mp3');
+  let shakers = new Grid(back, 16, 16, 'shakers', 'wav');
   const top = document.getElementsByClassName('top')[0];
-  let vox = new Grid(top, 16, 16, 'vox', 'wav');
+  let bongos = new Grid(top, 16, 16, 'bongos', 'wav');
   hats.play(0);
- //  brass.play(0);
-  vox.play(0);
+  shakers.play(0);
+  bongos.play(0);
   bells.play(0);
   drums.play(0);
   snares.play(0);
@@ -103,8 +103,8 @@ const setupInstruments = () => {
                 {instrument: drums, face: "bottom"},
                 {instrument: snares, face: "left"},
                 {instrument: hats, face: "right"},
-                {instrument: brass, face: "back"},
-                {instrument: vox, face: "top"}];
+                {instrument: shakers, face: "back"},
+                {instrument: bongos, face: "top"}];
   setupResetButtons(grids);
 };
 
