@@ -11,23 +11,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mileshobby/chimes.git"
+    "url": "git+https://github.com/mileshobby/turntable.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mileshobby/chimes/issues"
+    "url": "https://github.com/mileshobby/turntable/issues"
   },
-  "homepage": "https://github.com/mileshobby/chimes#readme",
+  "homepage": "https://github.com/mileshobby/turntable#readme",
   "dependencies": {
     "animejs": "^2.0.2",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   }
