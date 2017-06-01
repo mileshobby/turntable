@@ -6,14 +6,12 @@
     <script src="https://use.fontawesome.com/e5e97755c5.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Raleway" rel="stylesheet">
     <meta charset="utf-8">
-    <title>Chime</title>
+    <title>TurnTable</title>
   </head>
   <body>
 
       <section id='left-controls'>
-        <span id="instructions">
-          Click & Drag To Start Making Music!
-        </span>
+        <header class='instructions'>Pick a new instrument to spin the turntable!</header>
         <nav id='cube-controls'>
           <button id='front-button' class='cube-control'>BELLS</button>
           <button id='left-button' class='cube-control'>SNARES</button>
@@ -22,22 +20,27 @@
           <button id='top-button' class='cube-control'>VOCALS</button>
           <button id='bottom-button' class='cube-control'>BASE</button>
         </nav>
+        <header class='instructions'>Change up the tempo!</header>
         <span id='controls'>
           <button id='pause'><i class="fa fa-pause" aria-hidden="true"></i></button>
           <button id='play' class="off"><i class="fa fa-play" aria-hidden="true"></i></button>
           <input id='freq' type="range" min=100 max=500 value=200 />
         </span>
+        <header class='instructions'>Don't like your creation? Start Over!</header>
         <nav>
           <button id='reset-all' class='reset-button'>RESET ALL</button>
           <button id='reset-face' class='reset-button'>RESET FACE</button>
         </nav>
+        <footer class='links'>
+          <i class="fa fa-github" aria-hidden="true"></i>
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+        </footer>
       </section>
 
         <div id="main-content">
 
-          <div id="center-justification">
-
-              <h1 id="title">TURNTABLE</h1>
+              <h1 id='main-title'>TURNTABLE</h1>
+              <h2>Click & Drag To Start Making Music!</h2>
 
             <section id='container'>
               <div id='cube' class='show-front'>
@@ -49,7 +52,6 @@
                 <figure id='main-2' class='bottom'></figure>
                 </div>
             </section>
-          </div>
         </div>
 
   </body>
