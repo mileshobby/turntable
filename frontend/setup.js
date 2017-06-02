@@ -77,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
    });
  };
 
-//spinner for audio buffer time
- const loadContent = () => {
-   setTimeout(()=>{
-     document.getElementById('loading-screen').style.display = 'none';
-   }, 1000);
- };
+// //spinner for audio buffer time
+//  const loadContent = () => {
+//    setTimeout(()=>{
+//      document.getElementById('loading-screen').style.display = 'none';
+//    }, 1000);
+//  };
