@@ -4,7 +4,6 @@ import Grid from './grid';
 document.addEventListener('DOMContentLoaded', () => {
    setupInstruments();
    setupRotationControls();
-   loadContent();
    //spin title animation
    anime({
      targets: 'h1',

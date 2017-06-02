@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -122,16 +122,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-Audio.prototype.stop = function () {
-  this.pause();
-  this.currentTime = 0.0;
-};
-
 var Square = function () {
-  function Square(tone, parent, frequency, folder, filetype) {
+  function Square(toneI, parent, frequency, folder) {
     _classCallCheck(this, Square);
 
-    this.audio = new Audio('./assets/' + folder + '/' + tone + '.' + filetype);
+    this.audio = document.getElementById(folder + '-' + toneI);
     this.play = this.play.bind(this);
     this.toggleState = this.toggleState.bind(this);
     this.square = document.createElement('div');
@@ -143,7 +138,6 @@ var Square = function () {
     this.selected = false;
     this.animate = this.animate.bind(this);
     this.turnOff = this.turnOff.bind(this);
-    // this.randomColor = this.randomColor.bind(this);
   }
 
   _createClass(Square, [{
@@ -152,10 +146,10 @@ var Square = function () {
       var _this = this;
 
       if (this.selected && this.audio.readyState === 4) {
-        this.audio.stop();
+        this.audio.pause();
+        this.audio.currentTime = 0.0;
         this.square.classList.add('playing');
         this.animate();
-        //  this.square.style.background = this.randomColor();
         this.audio.play();
         setTimeout(function () {
           _this.square.classList.remove('playing');
@@ -168,7 +162,6 @@ var Square = function () {
       this.selected = false;
       this.square.classList.remove('selected');
       this.square.classList.remove('playing');
-      this.square.classList.remove('playing');
     }
   }, {
     key: 'animate',
@@ -180,17 +173,6 @@ var Square = function () {
         duration: this.frequency * 2
       });
     }
-
-    // randomColor(){
-    //   const HEX = ['1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
-    //   let randomColor = "#";
-    //   for (let i = 0; i < 6; i++) {
-    //     randomColor += (HEX[Math.floor(Math.random()*16)]);
-    //   }
-    //   console.log(randomColor);
-    //   return randomColor;
-    // }
-
   }, {
     key: 'toggleState',
     value: function toggleState(e) {
@@ -228,80 +210,13 @@ var _square = __webpack_require__(1);
 
 var _square2 = _interopRequireDefault(_square);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Column = function () {
-  function Column(parent, numRows, frequency, folder, filetype) {
-    var _this = this;
-
-    _classCallCheck(this, Column);
-
-    this.column = document.createElement('div');
-    this.column.className = 'column';
-    parent.appendChild(this.column);
-    this.squares = new Array(numRows).fill();
-    this.squares = this.squares.map(function (el, i) {
-      return new _square2.default('tone' + (i + 1), _this.column, frequency, folder, filetype);
-    });
-    this.playAll = this.playAll.bind(this);
-    this.turnOff = this.turnOff.bind(this);
-  }
-
-  _createClass(Column, [{
-    key: 'playAll',
-    value: function playAll() {
-      this.squares.forEach(function (square) {
-        return square.play();
-      });
-    }
-  }, {
-    key: 'turnOff',
-    value: function turnOff() {
-      this.squares.forEach(function (square) {
-        return square.turnOff();
-      });
-    }
-  }]);
-
-  return Column;
-}();
-
-exports.default = Column;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _square = __webpack_require__(1);
-
-var _square2 = _interopRequireDefault(_square);
-
-var _column = __webpack_require__(2);
+var _column = __webpack_require__(3);
 
 var _column2 = _interopRequireDefault(_column);
 
-var _animejs = __webpack_require__(0);
-
-var _animejs2 = _interopRequireDefault(_animejs);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-document.addEventListener('DOMContentLoaded', function () {
-  setupInstruments();
-  setupRotationControls();
-  loadContent();
-});
-
-//TODO refactor this out into its own file
 
 var Grid = function () {
   function Grid(parent, numCols, numRows, folder, filetype) {
@@ -316,6 +231,16 @@ var Grid = function () {
       _this.frequency = 600 - e.target.value;
     });
 
+    //setup audio
+    var audio = void 0;
+    var audioContainer = document.getElementById('audio-container');
+    for (var i = 0; i < 16; i++) {
+      audio = document.createElement('audio');
+      audio.id = folder + '-' + (i + 1);
+      audio.setAttribute("src", './assets/' + folder + '/tone' + (i + 1) + '.' + filetype);
+      audioContainer.appendChild(audio);
+    }
+
     //grid
     this.grid = document.createElement('div');
     this.grid.className = 'grid';
@@ -323,8 +248,8 @@ var Grid = function () {
     this.numRows = numRows;
     parent.appendChild(this.grid);
     this.columns = new Array(this.numCols).fill();
-    this.columns = this.columns.map(function (el, i) {
-      return new _column2.default(_this.grid, _this.numRows, _this.frequency, folder, filetype);
+    this.columns = this.columns.map(function (el, j) {
+      return new _column2.default(_this.grid, _this.numRows, _this.frequency, folder);
     });
     this.play = this.play.bind(this);
     this.stopPlay = false;
@@ -375,6 +300,101 @@ var Grid = function () {
   return Grid;
 }();
 
+exports.default = Grid;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _square = __webpack_require__(1);
+
+var _square2 = _interopRequireDefault(_square);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Column = function () {
+  function Column(parent, numRows, frequency, folder) {
+    var _this = this;
+
+    _classCallCheck(this, Column);
+
+    this.column = document.createElement('div');
+    this.column.className = 'column';
+    parent.appendChild(this.column);
+    this.squares = new Array(numRows).fill();
+    this.squares = this.squares.map(function (el, i) {
+      return new _square2.default('' + (i + 1), _this.column, frequency, folder);
+    });
+    this.playAll = this.playAll.bind(this);
+    this.turnOff = this.turnOff.bind(this);
+  }
+
+  _createClass(Column, [{
+    key: 'playAll',
+    value: function playAll() {
+      this.squares.forEach(function (square) {
+        return square.play();
+      });
+    }
+  }, {
+    key: 'turnOff',
+    value: function turnOff() {
+      this.squares.forEach(function (square) {
+        return square.turnOff();
+      });
+    }
+  }]);
+
+  return Column;
+}();
+
+exports.default = Column;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _animejs = __webpack_require__(0);
+
+var _animejs2 = _interopRequireDefault(_animejs);
+
+var _grid = __webpack_require__(2);
+
+var _grid2 = _interopRequireDefault(_grid);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+document.addEventListener('DOMContentLoaded', function () {
+  setupInstruments();
+  setupRotationControls();
+  loadContent();
+  //spin title animation
+  (0, _animejs2.default)({
+    targets: 'h1',
+
+    rotate: {
+      value: 360,
+      duration: 3000,
+      easing: 'easeInOutSine'
+    },
+    delay: 1000
+  });
+});
+
 var setupRotationControls = function setupRotationControls() {
   //DRYed up code by making event listener on wrapping div instead of each
   //individual button
@@ -389,19 +409,19 @@ var setupRotationControls = function setupRotationControls() {
 };
 
 var setupInstruments = function setupInstruments() {
-  //setup
+  //setup each side of cube
   var front = document.getElementsByClassName('front')[0];
-  var snares = new Grid(front, 16, 16, 'claps&snares', 'wav');
+  var snares = new _grid2.default(front, 16, 16, 'claps&snares', 'wav');
   var left = document.getElementsByClassName('left')[0];
-  var bells = new Grid(left, 16, 16, 'tones2', 'mp3');
+  var bells = new _grid2.default(left, 16, 16, 'tones2', 'mp3');
   var bottom = document.getElementsByClassName('bottom')[0];
-  var drums = new Grid(bottom, 16, 16, 'kicks', 'wav');
+  var drums = new _grid2.default(bottom, 16, 16, 'kicks', 'wav');
   var right = document.getElementsByClassName('right')[0];
-  var hats = new Grid(right, 16, 16, 'hats', 'wav');
+  var hats = new _grid2.default(right, 16, 16, 'hats', 'wav');
   var back = document.getElementsByClassName('back')[0];
-  var shakers = new Grid(back, 16, 16, 'shakers', 'wav');
+  var shakers = new _grid2.default(back, 16, 16, 'shakers', 'wav');
   var top = document.getElementsByClassName('top')[0];
-  var bongos = new Grid(top, 16, 16, 'bongos', 'wav');
+  var bongos = new _grid2.default(top, 16, 16, 'bongos', 'wav');
   hats.play(0);
   shakers.play(0);
   bongos.play(0);
@@ -432,10 +452,11 @@ var setupResetButtons = function setupResetButtons(grids) {
   });
 };
 
+//spinner for audio buffer time
 var loadContent = function loadContent() {
   setTimeout(function () {
     document.getElementById('loading-screen').style.display = 'none';
-  }, 5000);
+  }, 1000);
 };
 
 /***/ })

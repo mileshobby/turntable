@@ -1,5 +1,7 @@
 ## TurnTable
 
+[TurnTable Live](https://mileshobby.github.io/turntable/)
+
 ### Background
 
 TurnTable is a browser application written in vanilla JavaScript, HTML, and CSS. The app consists of a three-dimensional musical step-sequencer focused on percussion. Each face of the cube represents a different instrument, and each row of each grid represents a different tone or noise by that instrument. The idea was based upon the two dimensional pentatonic tonematrix audiotool.
@@ -12,7 +14,6 @@ The basic functionality of the site (without the most important feature: audio) 
 TurnTable is built with vanilla JavaScript, CSS, and HTML. A challenge in building this application was in managing internal state of different components without the use of any external libraries such as React, Redux, or jQuery. In order to solve this problem, I mirrored the parent/child component structure with unidirectional data flow found in React/Redux. The cube is split into three main classes: a grid, a column, and a square. The grid keeps track of playing each column, the columns keep track of playing each square, and the square keep track of their on/off state, and are the components that ultimately handle playing their associated Audio Element. Event listeners for mouseover (with additional testing to ensure the mouse is also pressed) are used for each square to toggle its state.
 
 ### Playing & Changing Tempo
-
 An asynchronous recursive function is used by each grid to play each column consecutively at the speed dictated by the tempo bar. This is shown in the following code snippet:
 
 ```   
