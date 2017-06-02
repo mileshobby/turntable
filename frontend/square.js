@@ -20,7 +20,6 @@ class Square{
     this.selected = false;
     this.animate = this.animate.bind(this);
     this.turnOff = this.turnOff.bind(this);
-    // this.randomColor = this.randomColor.bind(this);
   }
 
   play(e){
@@ -28,7 +27,6 @@ class Square{
      this.audio.stop();
      this.square.classList.add('playing');
      this.animate();
-    //  this.square.style.background = this.randomColor();
      this.audio.play();
      setTimeout(()=>{
        this.square.classList.remove('playing');
@@ -40,7 +38,6 @@ class Square{
   turnOff(){
     this.selected = false;
     this.square.classList.remove('selected');
-    this.square.classList.remove('playing');
     this.square.classList.remove('playing');
   }
 
@@ -55,16 +52,6 @@ class Square{
        duration: this.frequency*2,
      });
   }
-
-  // randomColor(){
-  //   const HEX = ['1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
-  //   let randomColor = "#";
-  //   for (let i = 0; i < 6; i++) {
-  //     randomColor += (HEX[Math.floor(Math.random()*16)]);
-  //   }
-  //   console.log(randomColor);
-  //   return randomColor;
-  // }
 
   toggleState(e){
     e.preventDefault();

@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
    setupInstruments();
    setupRotationControls();
    loadContent();
+   anime({
+     targets: 'h1',
+
+     rotate: {
+      value: 360,
+      duration: 3000,
+      easing: 'easeInOutSine',
+    },
+    delay: 5000
+  });
  });
 
 //TODO refactor this out into its own file
