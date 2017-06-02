@@ -1,7 +1,6 @@
 import Square from './square';
 import Column from './column';
 
-//TODO refactor this out into its own file
 class Grid{
 
   constructor(parent, numCols, numRows, folder, filetype){
@@ -12,6 +11,16 @@ class Grid{
       this.frequency = 600 - e.target.value;
     });
 
+    //setup audio
+    let audio;
+    let audioContainer = document.getElementById('audio-container');
+    for (let i = 0; i < 16; i++) {
+      audio = document.createElement('audio');
+      audio.id = `${folder}-${i+1}`;
+      audio.setAttribute("src", `./assets/${folder}/tone${i+1}.${filetype}`);
+      audioContainer.appendChild(audio);
+    }
+
     //grid
     this.grid = document.createElement('div');
     this.grid.className = 'grid';
@@ -19,7 +28,7 @@ class Grid{
     this.numRows = numRows;
     parent.appendChild(this.grid);
     this.columns = new Array(this.numCols).fill();
-    this.columns = this.columns.map( (el, i) => new Column(this.grid, this.numRows, this.frequency, folder, filetype) );
+    this.columns = this.columns.map( (el, j) => new Column(this.grid, this.numRows, this.frequency, folder) );
     this.play = this.play.bind(this);
     this.stopPlay = false;
     this.pauseIndex = 0;

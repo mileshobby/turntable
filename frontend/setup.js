@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
       duration: 3000,
       easing: 'easeInOutSine',
     },
-    delay: 5000
+    delay: 1000
   });
  });
 
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
  };
 
  const setupInstruments = () => {
-   //setup
+   //setup each side of cube
    const front = document.getElementsByClassName('front')[0];
    let snares = new Grid(front, 16, 16, 'claps&snares', 'wav');
    const left = document.getElementsByClassName('left')[0];
@@ -78,8 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
    });
  };
 
+//spinner for audio buffer time
  const loadContent = () => {
    setTimeout(()=>{
      document.getElementById('loading-screen').style.display = 'none';
-   }, 5000);
+   }, 1000);
  };

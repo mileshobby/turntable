@@ -1,14 +1,9 @@
 import anime from 'animejs';
 
-Audio.prototype.stop = function(){
-    this.pause();
-    this.currentTime = 0.0;
-};
-
 class Square{
 
-  constructor(tone, parent, frequency, folder, filetype){
-    this.audio = new Audio(`./assets/${folder}/${tone}.${filetype}`);
+  constructor(toneI, parent, frequency, folder){
+    this.audio = document.getElementById(`${folder}-${toneI}`);
     this.play = this.play.bind(this);
     this.toggleState = this.toggleState.bind(this);
     this.square = document.createElement('div');
@@ -24,7 +19,8 @@ class Square{
 
   play(e){
     if (this.selected && this.audio.readyState === 4 ){
-     this.audio.stop();
+     this.audio.pause();
+     this.audio.currentTime = 0.0;
      this.square.classList.add('playing');
      this.animate();
      this.audio.play();
