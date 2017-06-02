@@ -1,0 +1,108 @@
+#left-controls{
+  display: flex;
+  flex-direction: column;
+  border-right: 3px solid white;
+  align-items: center;
+  padding: 10px;
+  height: 100%;
+}
+
+#left-controls nav{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+  align-items: center;
+}
+
+.instructions{
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  margin: 30px;
+  font-size: 18px;
+}
+
+.cube-control, .reset-button{
+  margin: 5px;
+  background-color: white;
+  font-size: 18px;
+  width: 175px;
+  padding: 5px;
+}
+
+.cube-control{
+  color: red;
+  background-color: black;
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+.reset-button{
+  color: red;
+  background-color: black;
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+.reset-button:hover{
+  color: black;
+  background-color: red;
+}
+
+.cube-control:hover{
+  background-color: red;
+  color: black;
+}
+
+.links{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.links i{
+  font-size: 25px;
+  margin: 10px;
+}
+
+h1{
+  color: white;
+  margin-bottom: 0px;
+}
+
+label{
+  color: white;
+}
+
+.fa{
+  color: white;
+  font-size: 30px;
+  background-color: black;
+}
+
+button{
+  border: none;
+  background-color: black;
+  font-size: 30px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+:focus{
+  outline: none;
+}
+
+i::before{
+    background: transparent;
+}
+
+#controls{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.off{
+  display: none;
+}
