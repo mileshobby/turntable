@@ -36,4 +36,4 @@ Each square in a row maintains a reference to the same Audio element, and when a
 
 ### Adding an extra dimension
 
-Pure CSS was used to build a three dimension object using the perspective property, Z-translations, and X-Y rotations. Essentially, the cube consists of six separate "grid" divs, each of which are rotated in 3d space to yield the resulting object.
+Pure CSS was used to build a three dimension object using the perspective property, Z-translations, and X-Y rotations. Essentially, the cube consists of six separate "grid" divs, each of which are rotated in three dimensional space to yield the resulting object.
