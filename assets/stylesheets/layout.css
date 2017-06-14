@@ -33,7 +33,7 @@ body{
 }
 h1, h2{
   text-align: center;
-  font-family: 'Luckiest Guy', sans-serif;
+  font-family: 'Russo One', sans-serif;
   letter-spacing: 3px;
   color: white;
 }
@@ -49,5 +49,4 @@ h2{
   position: relative;
   width: 100%;
   height: 100%;
-  margin-bottom: 100px;
 }
