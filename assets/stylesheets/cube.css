@@ -1,26 +1,26 @@
 #container{
   position: relative;
-  perspective: 1500px;
-  width: 600px;
+  perspective: 1000px;
+  width: 450px;
   margin: 0 auto;
 }
 
 #cube{
   margin: 40px;
-  width: 600px;
-  height: 600px;
+  width: 450px;
+  height: 450px;
   position: absolute;
   transform-style: preserve-3d;
   transition: transform 1.5s;
-  transform: translateZ( -100px );
+  transform: translateZ( -50px );
 }
 
-#cube.show-front  { transform: translateZ( -100px ) rotateY(    0deg ); }
-#cube.show-back   { transform: translateZ( -100px ) rotateX( -180deg ); }
-#cube.show-right  { transform: translateZ( -100px ) rotateY(  -90deg ); }
-#cube.show-left   { transform: translateZ( -100px ) rotateY(   90deg ); }
-#cube.show-top    { transform: translateZ( -100px ) rotateX(  -90deg ); }
-#cube.show-bottom { transform: translateZ( -100px ) rotateX(   90deg ); }
+#cube.show-front  { transform: translateZ( -50px ) rotateY(    0deg ); }
+#cube.show-back   { transform: translateZ( -50px ) rotateX( -180deg ); }
+#cube.show-right  { transform: translateZ( -50px ) rotateY(  -90deg ); }
+#cube.show-left   { transform: translateZ( -50px ) rotateY(   90deg ); }
+#cube.show-top    { transform: translateZ( -50px ) rotateX(  -90deg ); }
+#cube.show-bottom { transform: translateZ( -50px ) rotateX(   90deg ); }
 
 #cube figure{
   margin: 0;
@@ -32,27 +32,27 @@
 }
 
 #cube .front  {
-  transform: rotateY(   0deg ) translateZ( 300px );
+  transform: rotateY(   0deg ) translateZ( 225px );
   border: 1px solid red;
 }
 #cube .back   {
-  transform: rotateX( 180deg ) translateZ( 300px );
+  transform: rotateX( 180deg ) translateZ( 225px );
   border: 1px solid red;
 }
 #cube .right  {
-  transform: rotateY(  90deg ) translateZ( 300px );
+  transform: rotateY(  90deg ) translateZ( 225px );
   border: 1px solid red;
 }
 #cube .left   {
-  transform: rotateY( -90deg ) translateZ( 300px );
+  transform: rotateY( -90deg ) translateZ( 225px );
   border: 1px solid red;
 }
 #cube .top    {
-  transform: rotateX(  90deg ) translateZ( 300px );
+  transform: rotateX(  90deg ) translateZ( 225px );
   border: 1px solid red;
 }
 #cube .bottom {
-  transform: rotateX( -90deg ) translateZ( 300px );
+  transform: rotateX( -90deg ) translateZ( 225px );
   border: 1px solid red;
 }
 
